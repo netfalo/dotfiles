@@ -18,3 +18,19 @@
 (defvaralias 'cperl-indent-level 'tab-width)
 
 (setq-default fill-column 80)
+
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+;;Adding yaml-mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;;Bind newline-and-indent to enter in yaml files
+(add-hook 'yaml-mode-hook
+      '(lambda ()
+        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;;get rid of welcome screen and startup message
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
