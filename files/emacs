@@ -59,3 +59,6 @@
 
 ;;Better to use ord-mode
 (require 'org)
+
+;;Log time when done
+(setq org-log-done 'time)
