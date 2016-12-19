@@ -26,6 +26,10 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
+;;Adding lisp-mode
+(require 'lisp-mode)
+(add-to-list 'auto-mode-alist '("emacs" . lisp-mode))
+
 ;;Bind newline-and-indent to enter in yaml files
 (add-hook 'yaml-mode-hook
       '(lambda ()
@@ -46,10 +50,11 @@
                 (font-lock-mode 1))))
 
 
-;;backup and autosave files
-(setq auto-save-file-name-transforms
-      `(("." . "~/.emacs.autosave")))
+;;autosave files
+;;(setq auto-save-file-name-transforms
+;;     `(("." . "~/.emacs.autosave")))
 
+;;backup files
 (setq backup-directory-alist `(("." . "~/.emacs.backup")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
