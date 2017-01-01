@@ -75,10 +75,15 @@
 (setq make-backup-files nil)
 
 ;;Additional packages
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (use-package elpy
   :ensure t
-  :mode ("\\.py\\'" . elpy-mode))
-(elpy-enable)
+  :config
+  (add-to-list 'python-mode-hook
+               '(lambda ()
+                  (elpy-mode))))
 
 (use-package groovy-mode
   :ensure t
@@ -123,7 +128,13 @@
 
 (use-package nlinum
   :ensure t)
-(nlinum-mode)
+(defun initialize-nlinum (&optional frame)
+  (require 'nlinum)
+  (add-hook 'prog-mode-hook 'nlinum-mode))
+(when (daemonp)
+  (add-hook 'window-setup-hook 'initialize-nlinum)
+  (defadvice make-frame (around toggle-nlinum-mode compile activate)
+    (nlinum-mode -1) ad-do-it (nlinum-mode 1)))
 
 (use-package autopair
   :ensure t)
@@ -180,3 +191,4 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x g") 'magit-status))
+
