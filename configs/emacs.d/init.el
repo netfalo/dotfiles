@@ -152,6 +152,10 @@
   :ensure t)
 (ido-mode)
 
+(use-package ido-yes-or-no
+  :ensure t)
+(ido-yes-or-no-mode)
+
 (use-package multiple-cursors
   :ensure t)
 
@@ -186,9 +190,11 @@
 (global-set-key (kbd "C-{") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-}") 'mc/mark-next-like-this)
 
-
 (use-package magit
   :ensure t
   :config
   (global-set-key (kbd "C-x g") 'magit-status))
 
+(autoload 'word-count-mode "word-count"
+  "Minor mode to count words." t nil)
+(global-set-key "\M-+" 'word-count-mode)
