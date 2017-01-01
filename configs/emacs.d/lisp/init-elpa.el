@@ -10,7 +10,7 @@
 
 (require 'package)
 
-
+
 ;;; Standard package repositories
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -22,7 +22,7 @@
 (setq package-pinned-packages '((gtags . "marmalade")
                                 (php-extras . "marmalade")))
 
-
+
 ;; If gpg cannot be found, signature checking will fail, so we
 ;; conditionally enable it according to whether gpg is available. We
 ;; re-run this check once $PATH has been configured
@@ -33,7 +33,7 @@
 (after-load 'init-exec-path
   (sanityinc/package-maybe-enable-signatures))
 
-
+
 ;;; On-demand installation of packages
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -59,15 +59,15 @@ locate PACKAGE."
      (message "Couldn't install package `%s': %S" package err)
      nil)))
 
-
+
 ;; Don't do this, because we already did it (in init.el)
 (setq package-enable-at-startup nil)
 
-
+
 (require-package 'fullframe)
 (fullframe list-packages quit-window)
 
-
+
 (require-package 'cl-lib)
 (require 'cl-lib)
 
