@@ -136,6 +136,7 @@
   (defadvice make-frame (around toggle-nlinum-mode compile activate)
     (nlinum-mode -1) ad-do-it (nlinum-mode 1)))
 
+
 (use-package autopair
   :ensure t)
 (autopair-global-mode)
@@ -150,7 +151,9 @@
 
 (use-package ido
   :ensure t)
-(ido-mode)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
 
 (use-package ido-yes-or-no
   :ensure t)
@@ -198,3 +201,15 @@
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words." t nil)
 (global-set-key "\M-+" 'word-count-mode)
+
+(use-package flyspell
+  :ensure t)
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+(setq-default major-mode 'text-mode)
+
+(use-package mediawiki
+  :ensure t)
