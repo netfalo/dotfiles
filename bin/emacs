@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SERVER_FILE=/tmp/emacs$(id -u)/server
+
+if [ -f "${SERVER_FILE}" ]; then
+    exec /usr/bin/emacs "$@" < /dev/null &> /dev/null &
+    disown
+else
+    exec emacsclient -c -s "${SERVER_FILE}" "$@" < /dev/null &> /dev/null &
+fi
