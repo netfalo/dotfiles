@@ -10,7 +10,7 @@
  '(mediawiki-site-default "Ericsson wiki")
  '(package-selected-packages
    (quote
-    (company-irony yaml-mode org-journal dockerfile-mode company))))
+    (flymake-json json-mode mediawiki magit smex markdown-mode multiple-cursors ido-yes-or-no flycheck undo-tree autopair nlinum groovy-mode elpy use-package fullframe company-irony yaml-mode org-journal dockerfile-mode company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -213,3 +213,12 @@
 
 (use-package mediawiki
   :ensure t)
+
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
+
+(use-package flymake-json
+  :ensure t
+  :config
+  (add-hook 'json-mode-hook 'flymake-json-load))
