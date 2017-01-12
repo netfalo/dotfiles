@@ -32,6 +32,7 @@ platform=`uname`
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 BINPATH="$SCRIPTPATH/bin"
+SYSTEMDPATH="$SCRIPTPATH/systemd"
 SCRIPTPATH="$SCRIPTPATH/configs"
 popd > /dev/null
 
@@ -95,6 +96,37 @@ for script in `find $BINPATH -mindepth 1 -maxdepth 1`; do
   ln -s $LNOPTS "$script" "$linkfile" > /dev/null 2>&1
   if [ $? -eq 0 ]; then
     echo "OK"
+  else
+    if [ -f "$linkfile" ]; then
+      echo "Exists"
+    else
+      echo "Failed"
+    fi
+  fi
+done
+
+# Return to original pwd.
+popd > /dev/null
+
+
+# Move into systemd
+pushd "${HOME}/.config/systemd/user/" > /dev/null
+
+echo ""
+echo "Creating symlinks for systemd in $SYSTEMDPATH."
+echo ""
+
+for script in `find $SYSTEMDPATH -mindepth 1 -maxdepth 1`; do
+  linkfile="${script##*/}"
+  servicename=$(echo "${linkfile}" | cut -d'.' -f1)
+  echo -n "Linking $script -> $linkfile... "
+  ln -s $LNOPTS "$script" "$linkfile" > /dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    echo "OK"
+    echo "Enabling service"
+    systemctl enable --user "${servicename}"
+    echo "Starting service"
+    systemctl start --user "${servicename}"
   else
     if [ -f "$linkfile" ]; then
       echo "Exists"

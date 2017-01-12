@@ -222,3 +222,12 @@
   :ensure t
   :config
   (add-hook 'json-mode-hook 'flymake-json-load))
+
+(use-package haskell-mode
+  :ensure t
+  :mode "\\.hs\\'")
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
