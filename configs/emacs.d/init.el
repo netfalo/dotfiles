@@ -231,3 +231,9 @@
   :ensure t
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(defun newtempbuffer ()
+  (interactive)
+  (switch-to-buffer (make-temp-name "scratch")))
+
+(global-set-key (kbd "C-x C-b") 'newtempbuffer)
