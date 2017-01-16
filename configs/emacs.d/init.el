@@ -102,7 +102,6 @@
                     '(lambda ()
                        (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
-(autoload 'octave-mode "octave-mode" nil t)
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 (add-hook 'octave-mode-hook
