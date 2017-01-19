@@ -236,3 +236,6 @@
   (switch-to-buffer (make-temp-name "scratch")))
 
 (global-set-key (kbd "C-x C-b") 'newtempbuffer)
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "opera")
