@@ -239,3 +239,6 @@
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "xdg-open")
+
+(provide 'init)
+;;; init.el ends here
