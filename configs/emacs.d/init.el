@@ -224,6 +224,11 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
+(use-package org-journal
+  :ensure t
+  :config
+  (setq org-journal-dir . "~/Documents/notes/journal"))
+
 (require 'init-lsp)
 (require 'init-metals)
 (require 'init-lsp-react)
