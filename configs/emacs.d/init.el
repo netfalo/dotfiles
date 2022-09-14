@@ -102,17 +102,6 @@
                     '(lambda ()
                        (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
-(setq auto-mode-alist
-      (cons '("\\.m$" . octave-mode) auto-mode-alist))
-(add-hook 'octave-mode-hook
-          (lambda ()
-            (abbrev-mode 1)
-            (auto-fill-mode 1)
-            (if (eq window-system 'x)
-                (font-lock-mode 1))))
-
-(add-to-list 'auto-mode-alist '("\\.sh\\'" . shell-script-mode))
-
 (use-package company
   :ensure t
   :defer t
@@ -124,21 +113,6 @@
   (define-key company-active-map [tab] 'company-complete)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
-
-(use-package nlinum
-  :ensure t)
-(defun initialize-nlinum (&optional frame)
-  (require 'nlinum)
-  (add-hook 'prog-mode-hook 'nlinum-mode))
-(when (daemonp)
-  (add-hook 'window-setup-hook 'initialize-nlinum)
-  (defadvice make-frame (around toggle-nlinum-mode compile activate)
-    (nlinum-mode -1) ad-do-it (nlinum-mode 1)))
-
-
-(use-package autopair
-  :ensure t)
-(autopair-global-mode)
 
 (use-package undo-tree
   :ensure t)
@@ -210,8 +184,6 @@
 
 (setq-default major-mode 'text-mode)
 
-(use-package mediawiki
-  :ensure t)
 
 (use-package json-mode
   :ensure t
@@ -221,10 +193,6 @@
   :ensure t
   :config
   (add-hook 'json-mode-hook 'flymake-json-load))
-
-(use-package haskell-mode
-  :ensure t
-  :mode "\\.hs\\'")
 
 (use-package rainbow-delimiters
   :ensure t
