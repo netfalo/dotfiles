@@ -1,15 +1,6 @@
-(require 'package)
-
-;; Add melpa to your packages repositories
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(package-initialize)
-
-;; Install use-package if not already installed
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (require 'use-package)
 
 ;; Enable defer and ensure by default for use-package

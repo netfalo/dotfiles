@@ -208,8 +208,9 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "xdg-open")
 
-(require 'init-metals)
-(require 'init-lsp-react)
+(use-package which-key
+  :ensure t)
+
 
 (electric-pair-mode 1)
 
@@ -229,8 +230,9 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
-(use-package which-key
-  :ensure t)
+(require 'init-lsp)
+(require 'init-metals)
+(require 'init-lsp-react)
 
 (provide 'init)
 ;;; init.el ends here
