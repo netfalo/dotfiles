@@ -241,6 +241,7 @@
       browse-url-generic-program "xdg-open")
 
 (require 'init-metals)
+(require 'init-lsp-react)
 
 (provide 'init)
 ;;; init.el ends here
