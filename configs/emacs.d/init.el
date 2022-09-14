@@ -211,5 +211,7 @@
 (require 'init-metals)
 (require 'init-lsp-react)
 
+(electric-pair-mode 1)
+
 (provide 'init)
 ;;; init.el ends here
