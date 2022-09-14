@@ -228,5 +228,7 @@
 (require 'init-metals)
 (require 'init-lsp-react)
 
+(load-theme 'zenburn)
+
 (provide 'init)
 ;;; init.el ends here
