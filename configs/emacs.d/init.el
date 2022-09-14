@@ -226,5 +226,11 @@
 (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
 (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)
 
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
+
+(use-package which-key
+  :ensure t)
+
 (provide 'init)
 ;;; init.el ends here
