@@ -130,14 +130,16 @@
   :commands flycheck-mode)
 
 (use-package ido
-  :ensure t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode t)
+  :ensure t
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode t))
 
 (use-package ido-yes-or-no
-  :ensure t)
-(ido-yes-or-no-mode)
+  :ensure t
+  :config
+  (ido-yes-or-no-mode))
 
 (use-package multiple-cursors
   :ensure t)
