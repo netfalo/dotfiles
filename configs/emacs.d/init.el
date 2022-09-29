@@ -154,10 +154,6 @@
                                   (turn-on-auto-fill)
                                   (flyspell-mode))))
 
-(use-package smex
-  :ensure t)
-(global-set-key (kbd "M-x") 'smex)
-
 (require 'init-org)
 
 (global-set-key (kbd "C-x C-u") 'undo-tree-visualize)
@@ -276,6 +272,8 @@
 
 (global-set-key (kbd "M-<up>") 'move-region-up)
 (global-set-key (kbd "M-<down>") 'move-region-down)
+
+(require 'init-smex)
 
 (provide 'init)
 ;;; init.el ends here
