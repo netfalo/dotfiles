@@ -172,10 +172,6 @@
   :config
   (global-set-key (kbd "C-x g") 'magit-status))
 
-(autoload 'word-count-mode "word-count"
-  "Minor mode to count words." t nil)
-(global-set-key "\M-+" 'word-count-mode)
-
 (use-package flyspell
   :ensure t)
 (dolist (hook '(text-mode-hook))
@@ -184,7 +180,6 @@
   (add-hook hook (lambda () (flyspell-mode -1))))
 
 (setq-default major-mode 'text-mode)
-
 
 (use-package json-mode
   :ensure t
