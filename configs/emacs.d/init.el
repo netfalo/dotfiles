@@ -116,8 +116,14 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 (use-package undo-tree
-  :ensure t)
-(global-undo-tree-mode)
+  :ensure t
+  :config
+  (global-undo-tree-mode)
+  (setq undo-tree-visualizer-diff t)
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-enable-undo-in-region t)
+  (setq undo-tree-visualizer-timestamps t)
+  (setq undo-tree-visualizer-relative-timestamps nil))
 
 (use-package flycheck
   :ensure t
