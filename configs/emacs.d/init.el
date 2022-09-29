@@ -223,7 +223,19 @@
 (use-package org-journal
   :ensure t
   :config
-  (setq org-journal-dir . "~/Documents/notes/journal"))
+  (setq org-journal-dir "~/Documents/notes/journal"))
+
+(setq-default show-trailing-whitespace t)
+
+(global-set-key (kbd "M-o") 'other-window)
+
+(add-hook 'sql-mode-hook 'lsp)
+
+(use-package expand-region
+  :ensure t
+  :bind ("C-c +" . 'er/expand-region))
+
+(pending-delete-mode t)
 
 (require 'init-lsp)
 (require 'init-metals)
