@@ -214,11 +214,6 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
-(use-package org-journal
-  :ensure t
-  :config
-  (setq org-journal-dir "~/Documents/notes/journal"))
-
 (setq-default show-trailing-whitespace t)
 
 (global-set-key (kbd "M-o") 'other-window)
