@@ -63,6 +63,8 @@
 (put 'narrow-to-region 'disabled nil)
 (column-number-mode t)
 
+(setq visible-bell t)
+
 (defun my-minibuffer-setup-hook ()
   "Increase GC cons threshold."
   (setq gc-cons-threshold most-positive-fixnum))
