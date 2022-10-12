@@ -32,6 +32,10 @@
 (require 'init-utils)
 (require 'init-elpa)
 
+(unless (package-installed-p 'diminish)
+  (package-refresh-contents)
+  (package-install 'diminish))
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
