@@ -196,34 +196,29 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(defun newtempbuffer ()
-  (interactive)
-  (switch-to-buffer (make-temp-name "scratch")))
-
-(global-set-key (kbd "C-x C-b") 'newtempbuffer)
-
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "xdg-open")
 
 (use-package which-key
-  :ensure t)
-
+  :ensure t
+  :config
+  (which-key-mode))
 
 (electric-pair-mode 1)
 
 (use-package git-gutter
   :ensure t
   :hook (prog-mode . git-gutter-mode)
+  :diminish git-gutter-mode
   :config
   (setq
    git-gutter:update-interval 0.02))
 
+(column-number-mode)
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 
 (setq-default show-trailing-whitespace t)
-
-(global-set-key (kbd "M-o") 'other-window)
 
 (add-hook 'sql-mode-hook 'lsp)
 
