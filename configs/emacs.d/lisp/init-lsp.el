@@ -23,7 +23,14 @@
       create-lockfiles nil) ;; lock files will kill `npm start'
 
 ;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :init
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-show-with-cursor t)
+  :commands lsp-ui-mode)
+
 ;; if you are helm user
 (use-package helm-lsp
   :commands helm-lsp-workspace-symbol)
