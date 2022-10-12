@@ -123,6 +123,7 @@
 
 (use-package undo-tree
   :ensure t
+  :diminish
   :config
   (global-undo-tree-mode)
   (setq undo-tree-visualizer-diff t)
@@ -201,6 +202,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish
   :config
   (which-key-mode))
 
@@ -209,7 +211,7 @@
 (use-package git-gutter
   :ensure t
   :hook (prog-mode . git-gutter-mode)
-  :diminish git-gutter-mode
+  :diminish
   :config
   (setq
    git-gutter:update-interval 0.02))
@@ -251,6 +253,7 @@
 
 (use-package helm
   :ensure t
+  :diminish
   :bind
   ("M-x" . 'helm-M-x)
   ("C-x C-f" . 'helm-find-files)
@@ -270,7 +273,6 @@
 (use-package projectile
   :ensure t
   :after helm
-  :diminish projectile-mode
   :custom ((projectile-completion-system 'helm))
   :bind-keymap
   ("C-c p" . projectile-command-map)
