@@ -135,17 +135,18 @@
   :ensure t
   :commands flycheck-mode)
 
-(use-package ido
-  :ensure t
-  :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode t))
+;; Trying helm only a bit
+;; (use-package ido
+;;   :ensure t
+;;   :config
+;;   (setq ido-enable-flex-matching t)
+;;   (setq ido-everywhere t)
+;;   (ido-mode t))
 
-(use-package ido-yes-or-no
-  :ensure t
-  :config
-  (ido-yes-or-no-mode))
+;; (use-package ido-yes-or-no
+;;   :ensure t
+;;   :config
+;;   (ido-yes-or-no-mode))
 
 (use-package multiple-cursors
   :ensure t)
@@ -253,7 +254,36 @@
 
 (require 'init-move-region)
 
-(require 'init-smex)
+(use-package helm
+  :ensure t
+  :bind
+  ("M-x" . 'helm-M-x)
+  ("C-x C-f" . 'helm-find-files)
+  ("C-x b" . 'helm-buffers-list)
+  :config
+  (helm-mode 1)
+  (require 'helm-config)
+  (setq helm-M-x-show-short-doc t))
+
+(use-package helm-swoop
+  :ensure t
+  :bind ("C-s" . 'helm-swoop)
+  :config
+  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line))
+
+(use-package projectile
+  :ensure t
+  :after helm
+  :diminish projectile-mode
+  :custom ((projectile-completion-system 'helm))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/git/")
+    (setq projectile-project-search-path '("~/git")))
+  (setq projectile-switch-project-action #'projectile-dired)
+  :config (projectile-mode))
 
 (provide 'init)
 ;;; init.el ends here
