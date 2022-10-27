@@ -44,6 +44,13 @@
 (eval-when-compile
   (require 'use-package))
 
+
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
 ;; Essential settings.
 (setq inhibit-splash-screen t
       inhibit-startup-message t
@@ -282,6 +289,13 @@
     (setq projectile-project-search-path '("~/git")))
   (setq projectile-switch-project-action #'projectile-dired)
   :config (projectile-mode))
+
+(use-package helpful
+  :ensure t
+  :bind
+  ("C-h f" . #'helpful-callable)
+  ("C-h v" . #'helpful-variable)
+  ("C-h k" . #'helpful-key))
 
 (provide 'init)
 ;;; init.el ends here
